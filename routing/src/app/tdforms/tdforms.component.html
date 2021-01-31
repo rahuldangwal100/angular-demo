@@ -1,0 +1,19 @@
+<div class="container">
+<form #signinform="ngForm" (ngSubmit)="loginuser(signinform);">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailAddress" ngModel required #emailAddressField="ngModel">
+      <small class="form-text text-muted" *ngIf="emailAddressField.touched && !emailAddressField.valid">hi</small>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input  required  minlength="8" maxlength="30" class="form-control" id="exampleInputPassword1" name="password" ngModel required #passwordField="ngModel">
+      <div *ngIf="passwordField.touched && passwordField.errors.minlength">password should be more than 8 characters</div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" name="label" ngModel required>
+      <label class="form-check-label" for="exampleCheck1">Agree to terms</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!signinform.valid">Submit</button>
+  </form>
+</div>
